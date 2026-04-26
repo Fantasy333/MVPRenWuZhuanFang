@@ -551,6 +551,7 @@
 
       detailView.innerHTML = `
         <a class="back-link" href="#">← 返回專人專訪列表</a>
+  ${item.sourceUrl ? `<a class="back-link" href="${item.sourceUrl}" target="_blank">查看原文 →</a>` : ''}
         <section class="long-image-wrap">
           <img src="${item.longImage}" alt="${item.name} 專人專訪長圖" />
         </section>
