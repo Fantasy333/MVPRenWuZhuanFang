@@ -584,7 +584,7 @@
         <article class="${featuredClass}" data-keywords="${item.keywords} ${item.name} ${item.title}">
           <div class="card">
             <div class="portrait">
-              <img src="${item.cover}" alt="${item.name} 個人特刊封面" loading="lazy" />
+              <img src="${item.cover}" alt="${item.name} 個人特刊封面" loading="lazy" onload="this.classList.add('loaded')" />
               <span class="badge">${item.badge || '專人專訪'}</span>
             </div>
             <div class="content">
