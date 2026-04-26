@@ -60,6 +60,16 @@
       transform: rotate(-8deg);
     }
 
+    .hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hero-title .right {
+  align-self: flex-end;
+}
+    
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -423,7 +433,10 @@
     <section id="homeView">
       <section class="hero">
         <div class="eyebrow"><span class="mark"></span>AIA Premier Academy</div>
-        <h1>人物特刊・專人專訪</h1>
+        <h1 class="hero-title">
+  <span>人物特刊</span>
+  <span class="right">專人專訪</span>
+</h1>
       </section>
 
       <section class="toolbar" aria-label="文章搜尋工具">
