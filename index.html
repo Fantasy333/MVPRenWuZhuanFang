@@ -92,6 +92,40 @@
       letter-spacing: -0.06em;
     }
 
+    .action-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.25s ease;
+  border: 1px solid var(--brand-dark);
+}
+
+.btn-outline {
+  color: var(--brand-dark);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: rgba(95, 31, 21, 0.08);
+}
+
+.btn-primary {
+  background: var(--brand-dark);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--brand);
+}
+
     .hero p {
       position: relative;
       z-index: 1;
@@ -550,9 +584,9 @@
       detailView.style.display = 'block';
 
       detailView.innerHTML = `
-        <div style="display:flex; justify-content: space-between; align-items:center; flex-wrap: wrap;">
-  <a class="back-link" href="#">← 返回專人專訪列表</a>
-  <a class="back-link" href="${item.sourceUrl}" target="_blank">查看原文 →</a>
+       <div class="action-bar">
+  <a class="btn btn-outline" href="#">返回列表</a>
+  <a class="btn btn-primary" href="${item.sourceUrl}" target="_blank">查看原文</a>
 </div>
         <section class="long-image-wrap">
           <img src="${item.longImage}" alt="${item.name} 專人專訪長圖" />
