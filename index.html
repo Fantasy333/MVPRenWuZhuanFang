@@ -60,16 +60,6 @@
       transform: rotate(-8deg);
     }
 
-    .hero-title {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.hero-title .right {
-  align-self: flex-end;
-}
-    
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -101,40 +91,6 @@
       line-height: 0.98;
       letter-spacing: -0.06em;
     }
-
-    .action-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.btn {
-  padding: 10px 16px;
-  border-radius: 999px;
-  font-size: 14px;
-  text-decoration: none;
-  transition: 0.25s ease;
-  border: 1px solid var(--brand-dark);
-}
-
-.btn-outline {
-  color: var(--brand-dark);
-  background: transparent;
-}
-
-.btn-outline:hover {
-  background: rgba(95, 31, 21, 0.08);
-}
-
-.btn-primary {
-  background: var(--brand-dark);
-  color: white;
-}
-
-.btn-primary:hover {
-  background: var(--brand);
-}
 
     .hero p {
       position: relative;
@@ -221,6 +177,17 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity 0.6s ease, transform 0.5s ease;
+    }
+
+    .portrait img.loaded {
+      opacity: 1;
+    }
+
+    .card:hover .portrait img {
+      transform: scale(1.08);
     }
 
     .portrait::after {
@@ -282,10 +249,6 @@
       color: #4b3a30;
       line-height: 1.7;
       font-size: 15px;
-      display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
     }
 
     .chips {
@@ -437,10 +400,8 @@
     <section id="homeView">
       <section class="hero">
         <div class="eyebrow"><span class="mark"></span>AIA Premier Academy</div>
-        <h1 class="hero-title">
-  <span>人物特刊</span>
-  <span class="right">專人專訪</span>
-</h1>
+        <h1>人物特刊・專人專訪</h1>
+        <p>以精緻雜誌式版面展示顧問的成長路徑、專業亮點與人物故事。新增人物時，只需要在資料清單中加一組內容即可。</p>
       </section>
 
       <section class="toolbar" aria-label="文章搜尋工具">
@@ -469,87 +430,87 @@
     const interviews = [
       {
         id: 'janice-chen',
-        name: '陳倚晴',
+        name: 'Janice Chen',
         title: 'Janice Chen｜以親和力感染客戶，以客為先堅持專業',
-        cover: 'images/cover/chen-yi-qing.png',
-        longImage: 'images/longImage/chen-yi-qing.png',
+        cover: 'images/janice-chen.png',
+        longImage: 'images/janice-chen.png',
         year: '2024',
         badge: '專人專訪',
         summary: '從客戶個性化需求入手，透過細緻溝通與專業方案建立信任，展現 Premier Academy 顧問的服務溫度與長期價值。',
         quote: '每一次真誠交流，都是建立信任的開始。',
         tags: ['客戶服務', '個性化方案', '專業成長'],
         keywords: '陳倚晴 Janice Chen 友邦菁英學院 客戶 個性化 親和力',
-        sourceUrl: 'https://www.edigest.hk/%e4%bf%9d%e9%9a%aa/%e5%8f%8b%e9%82%a6%e7%b2%be%e8%8b%b1%e5%ad%b8%e9%99%a2-janice-chen-1363969/'
+        sourceUrl: '#'
       },
       {
         id: 'cheng-hao',
-        name: '陳浩',
-        title: '陳浩｜破局立新，穩健行遠',
-        cover: 'images/cover/chen-hao.png',
-        longImage: 'images/longImage/cheng-hao.png',
+        name: '程浩',
+        title: '程浩｜破局立新，穩健行遠',
+        cover: 'images/cheng-hao.png',
+        longImage: 'images/cheng-hao.png',
         year: '2026',
         badge: '專人專訪',
         summary: '從房地產行業轉向財務策劃，以全情投入與教練式思維帶領團隊，探索長期增長與專業化發展。',
         quote: '選擇往往比努力更為關鍵。',
         tags: ['財務策劃', '團隊管理', '教練式領導'],
-        keywords: '陳浩 陈浩 破局立新 穩健行遠 財務策劃 團隊管理',
-        sourceUrl: 'https://www.capital-hk.com/interview/corporate-strategy/AIA_PA_ChenTao_06032026'
+        keywords: '程浩 破局立新 穩健行遠 財務策劃 團隊管理',
+        sourceUrl: '#'
       },
       {
         id: 'lin-cui-ling',
         name: '林翠靈',
         title: '林翠靈｜從心出發，跨界突圍',
-        cover: 'images/cover/lin-cui-ling.png',
-        longImage: 'images/longImage/lin-cui-ling.png',
+        cover: 'images/lin-cui-ling.png',
+        longImage: 'images/lin-cui-ling.png',
         year: '2026',
         badge: '專人專訪',
         summary: '從企業人力資源部門轉投財務策劃行業，以行動詮釋華麗轉身，在照顧家庭與開拓事業之間找到新的節奏。',
         quote: '真正的轉型，是在不同人生階段重新定義自己的價值。',
         tags: ['跨界轉型', '家庭保障', '自我超越'],
         keywords: '林翠靈 林翠灵 從心出發 跨界突圍 人力資源 財務策劃',
-        sourceUrl: 'https://www.capital-hk.com/interview/corporate-strategy/AIA_PA_LinCuiLing_09042026'
+        sourceUrl: '#'
       },
       {
         id: 'tao-xiao-xi',
         name: '陶曉曦',
         title: '陶曉曦｜睿智跨界，勇闖新章',
-        cover: 'images/cover/tao-xiao-xi.png',
-        longImage: 'images/longImage/tao-xiao-xi.png',
+        cover: 'images/tao-xiao-xi.png',
+        longImage: 'images/tao-xiao-xi.png',
         year: '2026',
         badge: '專人專訪',
         summary: '從創立醫美公司到投身友邦香港，將商業洞察、理性分析與客戶信任結合，走出更具長期價值的事業新章。',
         quote: '專業不是單次說服，而是長久信任的累積。',
         tags: ['創業經驗', '價值認同', '專業轉型'],
         keywords: '陶曉曦 陶晓曦 睿智跨界 勇闖新章 醫美 創業 財務策劃',
-        sourceUrl: 'https://www.capital-hk.com/interview/AIA_PA_Tao_07012026'
+        sourceUrl: '#'
       },
       {
         id: 'wang-lu-lu',
         name: '王露露',
         title: '王露露｜菁英轉型，卓越新程',
-        cover: 'images/cover/wang-lu-lu.png',
-        longImage: 'images/longImage/wang-lu-lu.png',
+        cover: 'images/wang-lu-lu.png',
+        longImage: 'images/wang-lu-lu.png',
         year: '2026',
         badge: '專人專訪',
         summary: '從製造企業管理者轉型投入財務策劃行業，在跨越領域的挑戰中持續學習，逐步建立自己的專業節奏。',
         quote: '每一次轉變，都是重新理解事業與人生的機會。',
         tags: ['菁英轉型', '跨域成長', '事業家庭'],
         keywords: '王露露 菁英轉型 卓越新程 製造業 財務策劃 跨域成長',
-        sourceUrl: 'https://www.capital-hk.com/interview/corporate-strategy/AIA%20PA_WangLuLu_06022026'
+        sourceUrl: '#'
       },
       {
         id: 'kira-xia',
-        name: '夏子靜',
+        name: 'Kira Xia',
         title: 'Kira Xia｜發揮運動員堅毅精神，以決心踏入轉型新賽道',
-        cover: 'images/cover/xia-zi-jing.png',
-        longImage: 'images/longImage/xia-zi-jing.png',
+        cover: 'images/kira-xia.png',
+        longImage: 'images/kira-xia.png',
         year: '2026',
         badge: '專人專訪',
         summary: '從排球運動員到財務策劃工作者，以堅毅、紀律與不斷突破的心態，將運動精神延伸至專業服務。',
         quote: '真正的成長，來自每一次願意迎難而上的選擇。',
         tags: ['運動精神', '以客為本', '堅毅突破'],
         keywords: '夏子靜 夏子静 Kira Xia 運動員 堅毅精神 轉型 以客為本',
-        sourceUrl: 'https://www.edigest.hk/%e4%bf%9d%e9%9a%aa/%e5%8f%8b%e9%82%a6%e7%b2%be%e8%8b%b1%e5%ad%b8%e9%99%a2-kira-xia-1984019/'
+        sourceUrl: '#'
       }
     ];
 
@@ -559,6 +520,46 @@
     const searchInput = document.getElementById('searchInput');
     const emptyState = document.getElementById('emptyState');
     const articleCount = document.getElementById('articleCount');
+
+    // ===== Modal =====
+    const modal = document.createElement('div');
+    modal.style.position = 'fixed';
+    modal.style.inset = '0';
+    modal.style.background = 'rgba(0,0,0,0.6)';
+    modal.style.display = 'none';
+    modal.style.zIndex = '999';
+    modal.style.padding = '20px';
+    modal.style.overflow = 'auto';
+
+    const modalImg = document.createElement('img');
+    modalImg.style.display = 'block';
+    modalImg.style.margin = '0 auto';
+    modalImg.style.maxWidth = '760px';
+    modalImg.style.width = '100%';
+    modalImg.style.borderRadius = '16px';
+    modalImg.style.opacity = '0';
+    modalImg.style.transition = 'opacity 0.6s ease';
+
+    modal.appendChild(modalImg);
+    document.body.appendChild(modal);
+
+    function openModal(id) {
+      const item = interviews.find(i => i.id === id);
+      if (!item) return;
+      modalImg.style.opacity = '0';
+      modalImg.src = item.longImage;
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    modalImg.onload = () => {
+      modalImg.style.opacity = '1';
+    };
+
+    modal.onclick = () => {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    };
 
     function getProfileIdFromUrl() {
       return new URLSearchParams(window.location.hash.replace('#', '')).get('profile');
@@ -573,7 +574,7 @@
         <article class="${featuredClass}" data-keywords="${item.keywords} ${item.name} ${item.title}">
           <div class="card">
             <div class="portrait">
-              <img src="${item.cover}" alt="${item.name} 個人特刊封面" loading="lazy" />
+              <img src="${item.cover}" alt="${item.name} 個人特刊封面" loading="lazy" onload="this.classList.add('loaded')" />
               <span class="badge">${item.badge || '專人專訪'}</span>
             </div>
             <div class="content">
@@ -582,7 +583,7 @@
               <p class="summary">${item.summary}</p>
               <p class="quote">「${item.quote}」</p>
               <div class="chips">${tags}</div>
-              <a class="read-more" href="${detailUrl}">點擊閱讀</a>
+              <button class="read-more" onclick="openModal('${item.id}')">閱讀特刊</button>
             </div>
           </div>
         </article>
@@ -596,15 +597,16 @@
     }
 
     function renderDetail(item) {
-      document.title = `${item.name}｜專人專訪`;
+      // 保留原函数但不使用
+    }｜專人專訪`;
       homeView.style.display = 'none';
       detailView.style.display = 'block';
 
       detailView.innerHTML = `
-       <div class="action-bar">
-  <a class="btn btn-outline" href="#">返回首页</a>
-  <a class="btn btn-primary" href="${item.sourceUrl}" target="_blank">查看原文</a>
-</div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 20px;">
+          <a class="back-link" href="#" style="margin-bottom: 0;">← 返回專人專訪列表</a>
+          ${item.sourceUrl && item.sourceUrl !== '#' ? `<a class="back-link" href="${item.sourceUrl}" target="_blank" rel="noopener" style="margin-bottom: 0;">查看原文連結 →</a>` : ''}
+        </div>
         <section class="long-image-wrap">
           <img src="${item.longImage}" alt="${item.name} 專人專訪長圖" />
         </section>
@@ -621,7 +623,7 @@
     }
 
     function showHome() {
-      document.title = 'AIA MVP FAMILY｜專人專訪';
+      document.title = 'AIA Premier Academy｜專人專訪';
       detailView.style.display = 'none';
       homeView.style.display = 'block';
       if (!grid.innerHTML) renderCards(interviews);
