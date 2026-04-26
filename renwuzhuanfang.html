@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIA MVP FAMILY｜專人專訪</title>
+  <style>
+    :root {
+      --brand: #9f3a22;
+      --brand-dark: #5f1f15;
+      --gold: #d9b36c;
+      --ink: #263142;
+      --muted: #6d7685;
+      --line: rgba(95, 31, 21, 0.12);
+      --radius: 26px;
+      --shadow: 0 24px 70px rgba(64, 33, 20, 0.16);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: ui-serif, Georgia, "Times New Roman", "Noto Serif TC", "Microsoft JhengHei", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 5%, rgba(217, 179, 108, 0.22), transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(159, 58, 34, 0.18), transparent 32%),
+        linear-gradient(135deg, #fffaf3 0%, #f7efe4 52%, #fdf8f0 100%);
+      min-height: 100vh;
+    }
+
+    .site-shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 30px 0 54px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      padding: 46px;
+      min-height: 330px;
+      background: linear-gradient(135deg, rgba(95, 31, 21, 0.95), rgba(159, 58, 34, 0.9));
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      right: 44px;
+      bottom: -18px;
+      width: 460px;
+      height: 240px;
+      opacity: 0.22;
+      background:
+        linear-gradient(135deg, transparent 42%, rgba(255,255,255,0.95) 43%, rgba(255,255,255,0.95) 47%, transparent 48%),
+        linear-gradient(25deg, transparent 35%, rgba(255,255,255,0.88) 36%, rgba(255,255,255,0.88) 40%, transparent 41%);
+      transform: rotate(-8deg);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 13px;
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .mark {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 5px rgba(217,179,108,0.18);
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin: 28px 0 12px;
+      max-width: 760px;
+      font-size: clamp(36px, 6vw, 72px);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+    }
+
+    .hero p {
+      position: relative;
+      z-index: 1;
+      max-width: 660px;
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 28px 0 22px;
+    }
+
+    .section-title {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: var(--brand-dark);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title small {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .search {
+      width: min(330px, 100%);
+      padding: 12px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      outline: none;
+      font: inherit;
+      color: var(--ink);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      display: grid;
+      grid-template-columns: 0.88fr 1.12fr;
+      min-height: 430px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(255,255,255,0.82);
+      box-shadow: 0 18px 45px rgba(76, 45, 26, 0.1);
+      backdrop-filter: blur(18px);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 26px 62px rgba(76, 45, 26, 0.16);
+    }
+
+    .portrait {
+      position: relative;
+      min-height: 430px;
+      background: #ead9c8;
+    }
+
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .portrait::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 52%, rgba(0,0,0,0.42));
+    }
+
+    .badge {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      z-index: 1;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: white;
+      background: rgba(0,0,0,0.34);
+      backdrop-filter: blur(10px);
+      font-size: 13px;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.02em;
+    }
+
+    h2 {
+      margin: 18px 0 10px;
+      font-size: 30px;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--brand-dark);
+    }
+
+    .summary {
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 15.5px;
+    }
+
+    .quote {
+      margin: 0 0 20px;
+      padding: 16px 18px;
+      border-left: 3px solid var(--gold);
+      background: rgba(217,179,108,0.12);
+      border-radius: 0 16px 16px 0;
+      color: #4b3a30;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: #f5ead9;
+      color: var(--brand-dark);
+      font-size: 13px;
+    }
+
+    .read-more, .detail-btn {
+      align-self: flex-start;
+      margin-top: 22px;
+      padding: 11px 16px;
+      border-radius: 999px;
+      background: var(--brand-dark);
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.25s ease;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .read-more:hover, .detail-btn:hover {
+      background: var(--brand);
+      transform: translateX(2px);
+    }
+
+    .featured { grid-column: 1 / -1; }
+
+    .featured .card {
+      grid-template-columns: 0.82fr 1.18fr;
+    }
+
+    .empty {
+      display: none;
+      grid-column: 1 / -1;
+      padding: 36px;
+      text-align: center;
+      color: var(--muted);
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.55);
+    }
+
+    .detail-view { display: none; }
+
+    .detail-hero {
+      display: grid;
+      grid-template-columns: 1fr 0.72fr;
+      gap: 28px;
+      align-items: stretch;
+      margin-bottom: 24px;
+      padding: 34px;
+      border-radius: 34px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.85);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .back-link {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 20px;
+      color: var(--brand-dark);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .detail-title {
+      margin: 14px 0;
+      color: var(--brand-dark);
+      font-size: clamp(34px, 5vw, 60px);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+    }
+
+    .detail-copy {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.9;
+      margin: 0 0 18px;
+    }
+
+    .detail-cover {
+      overflow: hidden;
+      border-radius: 26px;
+      min-height: 420px;
+      background: #ead9c8;
+      box-shadow: 0 16px 40px rgba(76, 45, 26, 0.12);
+    }
+
+    .detail-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .long-image-wrap {
+      padding: 18px;
+      border-radius: 34px;
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(255,255,255,0.86);
+      box-shadow: 0 20px 55px rgba(76, 45, 26, 0.11);
+    }
+
+    .long-image-wrap img {
+      display: block;
+      width: min(760px, 100%);
+      height: auto;
+      margin: 0 auto;
+      border-radius: 18px;
+      background: white;
+    }
+
+    footer {
+      margin-top: 34px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .hero { padding: 34px 26px; }
+      .grid { grid-template-columns: 1fr; }
+      .card,
+      .featured .card { grid-template-columns: 1fr; }
+      .portrait { min-height: 390px; }
+      .toolbar { align-items: stretch; }
+      .search { width: 100%; }
+      .detail-hero { grid-template-columns: 1fr; padding: 24px; }
+      .detail-cover { min-height: 360px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="site-shell">
+    <section id="homeView">
+      <section class="hero">
+        <div class="eyebrow"><span class="mark"></span>AIA Premier Academy</div>
+        <h1>人物特刊・專人專訪</h1>
+        <p>以精緻雜誌式版面展示顧問的成長路徑、專業亮點與人物故事。新增人物時，只需要在資料清單中加一組內容即可。</p>
+      </section>
+
+      <section class="toolbar" aria-label="文章搜尋工具">
+        <div class="section-title">
+          <span>專人專訪</span>
+          <small id="articleCount">Personal Interview Collection</small>
+        </div>
+        <input class="search" id="searchInput" type="search" placeholder="搜尋姓名、標題或關鍵詞" />
+      </section>
+
+      <section class="grid" id="articleGrid"></section>
+      <div class="empty" id="emptyState">暫時沒有找到相符的人物特刊。</div>
+    </section>
+
+    <section id="detailView" class="detail-view"></section>
+
+    <footer>© AIA Premier Academy Feature Gallery</footer>
+  </main>
+
+  <script>
+    /*
+      通用資料區：以後新增人物，只要複製一組 {}，改文字和圖片檔名即可。
+      cover 是卡片/詳情頁封面圖；longImage 是點進去後展示的長圖。
+      如果你暫時只有一張長圖，可以 cover 和 longImage 用同一張。
+    */
+    const interviews = [
+      {
+        id: 'janice-chen',
+        name: '陳倚晴',
+        title: 'Janice Chen｜以親和力感染客戶，以客為先堅持專業',
+        cover: '陳倚晴(2).png',
+        longImage: '陳倚晴(2).png',
+        year: '2024',
+        badge: '專人專訪',
+        summary: '從客戶個性化需求入手，透過細緻溝通與專業方案建立信任，展現 Premier Academy 顧問的服務溫度與長期價值。',
+        quote: '每一次真誠交流，都是建立信任的開始。',
+        tags: ['客戶服務', '個性化方案', '專業成長'],
+        keywords: '陳倚晴 Janice Chen 友邦菁英學院 客戶 個性化 親和力'
+      },
+      {
+        id: 'cheng-hao',
+        name: '程浩',
+        title: '程浩｜破局立新，穩健行遠',
+        cover: '程浩(2).png',
+        longImage: '程浩(2).png',
+        year: '2026',
+        badge: '專人專訪',
+        summary: '從房地產行業轉向財務策劃，以全情投入與教練式思維帶領團隊，探索長期增長與專業化發展。',
+        quote: '選擇往往比努力更為關鍵。',
+        tags: ['財務策劃', '團隊管理', '教練式領導'],
+        keywords: '程浩 破局立新 穩健行遠 財務策劃 團隊管理'
+      },
+      {
+        id: 'lin-cui-ling',
+        name: '林翠靈',
+        title: '林翠靈｜從心出發，跨界突圍',
+        cover: '林翠灵(1).png',
+        longImage: '林翠灵(1).png',
+        year: '2026',
+        badge: '專人專訪',
+        summary: '從企業人力資源部門轉投財務策劃行業，以行動詮釋華麗轉身，在照顧家庭與開拓事業之間找到新的節奏。',
+        quote: '真正的轉型，是在不同人生階段重新定義自己的價值。',
+        tags: ['跨界轉型', '家庭保障', '自我超越'],
+        keywords: '林翠靈 林翠灵 從心出發 跨界突圍 人力資源 財務策劃'
+      },
+      {
+        id: 'tao-xiao-xi',
+        name: '陶曉曦',
+        title: '陶曉曦｜睿智跨界，勇闖新章',
+        cover: '陶晓曦(1).png',
+        longImage: '陶晓曦(1).png',
+        year: '2026',
+        badge: '專人專訪',
+        summary: '從創立醫美公司到投身友邦香港，將商業洞察、理性分析與客戶信任結合，走出更具長期價值的事業新章。',
+        quote: '專業不是單次說服，而是長久信任的累積。',
+        tags: ['創業經驗', '價值認同', '專業轉型'],
+        keywords: '陶曉曦 陶晓曦 睿智跨界 勇闖新章 醫美 創業 財務策劃'
+      },
+      {
+        id: 'wang-lu-lu',
+        name: '王露露',
+        title: '王露露｜菁英轉型，卓越新程',
+        cover: '王露露(1).png',
+        longImage: '王露露(1).png',
+        year: '2026',
+        badge: '專人專訪',
+        summary: '從製造企業管理者轉型投入財務策劃行業，在跨越領域的挑戰中持續學習，逐步建立自己的專業節奏。',
+        quote: '每一次轉變，都是重新理解事業與人生的機會。',
+        tags: ['菁英轉型', '跨域成長', '事業家庭'],
+        keywords: '王露露 菁英轉型 卓越新程 製造業 財務策劃 跨域成長'
+      },
+      {
+        id: 'kira-xia',
+        name: '夏子静',
+        title: 'Kira Xia｜發揮運動員堅毅精神，以決心踏入轉型新賽道',
+        cover: '夏子静(1).png',
+        longImage: '夏子静(1).png',
+        year: '2026',
+        badge: '專人專訪',
+        summary: '從排球運動員到財務策劃工作者，以堅毅、紀律與不斷突破的心態，將運動精神延伸至專業服務。',
+        quote: '真正的成長，來自每一次願意迎難而上的選擇。',
+        tags: ['運動精神', '以客為本', '堅毅突破'],
+        keywords: '夏子靜 夏子静 Kira Xia 運動員 堅毅精神 轉型 以客為本'
+      }
+    ];
+
+    const homeView = document.getElementById('homeView');
+    const detailView = document.getElementById('detailView');
+    const grid = document.getElementById('articleGrid');
+    const searchInput = document.getElementById('searchInput');
+    const emptyState = document.getElementById('emptyState');
+    const articleCount = document.getElementById('articleCount');
+
+    function getProfileIdFromUrl() {
+      return new URLSearchParams(window.location.hash.replace('#', '')).get('profile');
+    }
+
+    function createCard(item, index) {
+      const tags = item.tags.map(tag => `<span class="chip">${tag}</span>`).join('');
+      const detailUrl = `#profile=${encodeURIComponent(item.id)}`;
+      const featuredClass = index === 0 ? 'featured' : '';
+
+      return `
+        <article class="${featuredClass}" data-keywords="${item.keywords} ${item.name} ${item.title}">
+          <div class="card">
+            <div class="portrait">
+              <img src="${item.cover}" alt="${item.name} 個人特刊封面" loading="lazy" />
+              <span class="badge">${item.badge || '專人專訪'}</span>
+            </div>
+            <div class="content">
+              <div class="meta"><span>AIA Premier Academy</span><span>${item.year || '專訪'}</span></div>
+              <h2>${item.title}</h2>
+              <p class="summary">${item.summary}</p>
+              <p class="quote">「${item.quote}」</p>
+              <div class="chips">${tags}</div>
+              <a class="read-more" href="${detailUrl}">點擊閱讀</a>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderCards(list) {
+      grid.innerHTML = list.map(createCard).join('');
+      emptyState.style.display = list.length ? 'none' : 'block';
+      articleCount.textContent = `${list.length} Features · Personal Interview Collection`;
+    }
+
+    function renderDetail(item) {
+      document.title = `${item.name}｜專人專訪`;
+      homeView.style.display = 'none';
+      detailView.style.display = 'block';
+
+      const tags = item.tags.map(tag => `<span class="chip">${tag}</span>`).join('');
+
+      detailView.innerHTML = `
+        <a class="back-link" href="#">← 返回專人專訪列表</a>
+        <section class="detail-hero">
+          <div>
+            <div class="eyebrow" style="color: var(--brand-dark); border-color: var(--line); background: rgba(255,255,255,0.62);">
+              <span class="mark"></span>${item.badge || '專人專訪'} · ${item.year || '專訪'}
+            </div>
+            <h1 class="detail-title">${item.title}</h1>
+            <p class="detail-copy">${item.summary}</p>
+            <p class="quote">「${item.quote}」</p>
+            <div class="chips">${tags}</div>
+            <a class="detail-btn" href="${item.longImage}" target="_blank" rel="noopener">打開原圖</a>
+          </div>
+          <div class="detail-cover">
+            <img src="${item.cover}" alt="${item.name} 專人專訪封面" />
+          </div>
+        </section>
+        <section class="long-image-wrap">
+          <img src="${item.longImage}" alt="${item.name} 專人專訪長圖" />
+        </section>
+      `;
+    }
+
+    function applySearch() {
+      const term = searchInput.value.trim().toLowerCase();
+      const filtered = interviews.filter(item => {
+        const text = `${item.name} ${item.title} ${item.summary} ${item.quote} ${item.tags.join(' ')} ${item.keywords}`.toLowerCase();
+        return !term || text.includes(term);
+      });
+      renderCards(filtered);
+    }
+
+    function init() {
+      const profileId = getProfileIdFromUrl();
+      const selected = interviews.find(item => item.id === profileId);
+
+      if (selected) {
+        renderDetail(selected);
+        return;
+      }
+
+      renderCards(interviews);
+      searchInput.addEventListener('input', applySearch);
+    }
+
+    window.addEventListener('hashchange', () => location.reload());
+    init();
+  </script>
+</body>
+</html>
